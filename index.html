@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Q1 ICT 10 Project: Business Website</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef7f4;
+            color: #263238;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            width: 220px;
+            height: 100vh;
+
+            background: #164e4a;
+            color: white;
+
+            padding: 28px 18px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .logo span {
+            color: #72d6a5;
+        }
+
+        .nav-button {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 10px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: transparent;
+            color: #d7eee8;
+
+            text-align: left;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        .nav-button:hover,
+        .nav-button.active {
+            background: #287a70;
+            color: white;
+        }
+
+
+        /* MAIN AREA */
+
+        .main {
+            margin-left: 220px;
+            padding: 35px;
+
+            min-height: 100vh;
+        }
+
+
+        /* TOP */
+
+        .top {
+            margin-bottom: 25px;
+        }
+
+        .top h1 {
+            margin: 0;
+            color: #164e4a;
+            font-size: 28px;
+        }
+
+        .top p {
+            color: #71817e;
+            margin-top: 7px;
+        }
+
+
+        /* CARD */
+
+        .card {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            max-width: 720px;
+
+            box-shadow:
+                0 5px 20px rgba(30, 70, 65, 0.08);
+        }
+
+
+        /* SKU FORM */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            font-size: 13px;
+
+            color: #38504c;
+        }
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #cbdad6;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #3da889;
+        }
+
+
+        /* BUTTON */
+
+        .generate {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #2b8c78;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .generate:hover {
+            background: #217363;
+        }
+
+
+        /* SKU RESULT */
+
+        .sku-result {
+
+            margin-top: 22px;
+
+            background: #e9f7f1;
+
+            border: 1px solid #bce3d3;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            text-align: center;
+        }
+
+        .sku-label {
+            font-size: 12px;
+            color: #63817a;
+        }
+
+        .sku-code {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #176653;
+
+            letter-spacing: 3px;
+
+            margin-top: 8px;
+        }
+
+        .sku-info {
+
+            font-size: 12px;
+
+            color: #71817e;
+
+            margin-top: 8px;
+        }
+
+
+        /* RECEIPT */
+
+        .product {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px;
+
+            border: 1px solid #e0ebe7;
+
+            border-radius: 10px;
+
+            margin-bottom: 10px;
+
+            cursor: pointer;
+        }
+
+        .product:hover {
+            background: #f4faf8;
+        }
+
+        .product-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .product input {
+            width: auto;
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .product-price {
+            color: #21806b;
+            font-weight: bold;
+        }
+
+
+        /* RECEIPT RESULT */
+
+        .receipt {
+
+            margin-top: 22px;
+
+            border-top: 1px solid #dce7e4;
+
+            padding-top: 18px;
+        }
+
+        .receipt h2 {
+            color: #164e4a;
+        }
+
+        .receipt-line {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #edf2f0;
+
+            font-size: 14px;
+        }
+
+        .receipt-total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-top: 15px;
+
+            color: #164e4a;
+        }
+
+
+        /* HIDDEN */
+
+        .hidden {
+            display: none;
+        }
+
+
+        /* FOOTER */
+
+        .footer {
+
+            margin-top: 30px;
+
+            color: #81918d;
+
+            font-size: 12px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+
+                position: static;
+
+                width: 100%;
+
+                height: auto;
+
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .nav-button {
+                display: inline-block;
+
+                width: auto;
+
+                margin-right: 5px;
+            }
+
+            .main {
+
+                margin-left: 0;
+
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: span 1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        Stock<span>Mate</span>
+    </div>
+
+
+    <button
+        id="skuNav"
+        class="nav-button active"
+        onclick="showSKU()">
+
+        📦 SKU Generator
+
+    </button>
+
+
+    <button
+        id="receiptNav"
+        class="nav-button"
+        onclick="showReceipt()">
+
+        🧾 Receipt Generator
+
+    </button>
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- MAIN -->
+<!-- ========================= -->
+
+<div class="main">
+
+
+    <!-- ========================= -->
+    <!-- SKU PAGE -->
+    <!-- ========================= -->
+
+    <div id="skuPage">
+
+
+        <div class="top">
+
+            <h1>
+                SKU Generator
+            </h1>
+
+            <p>
+                Create a unique code for every product in your inventory.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+
+            <div class="form-grid">
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Product Category
+                    </label>
+
+                    <select id="category">
+
+                        <option value="TEC">
+                            Technology
+                        </option>
+
+                        <option value="STA">
+                            Stationery
+                        </option>
+
+                        <option value="SPO">
+                            Sports
+                        </option>
+
+                        <option value="BEA">
+                            Beauty
+                        </option>
+
+                        <option value="HOM">
+                            Home
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STOCK -->
+
+                <div class="form-group">
+
+                    <label>
+                        Stock Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="stock"
+                        min="0"
+                        placeholder="Example: 25">
+
+                </div>
+
+
+                <!-- PRODUCT -->
+
+                <div class="form-group full">
+
+                    <label>
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="product"
+                        placeholder="Example: Wireless Keyboard">
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="generate"
+                onclick="generateSKU()">
+
+                Generate SKU
+
+            </button>
+
+
+            <div
+                id="skuResult"
+                class="sku-result">
+
+                <div class="sku-label">
+                    GENERATED SKU
+                </div>
+
+                <div class="sku-info">
+                    Enter your product information above.
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+
+            StockMate • Inventory Management Project
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- RECEIPT PAGE -->
+    <!-- ========================= -->
+
+    <div
+        id="receiptPage"
+        class="hidden">
+
+
+        <div class="top">
+
+            <h1>
+                Receipt Generator
+            </h1>
+
+            <p>
+                Select products to create your receipt.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+
+            <!-- PRODUCT 1 -->
+
+            <label class="product">
+
+                <div class="product-left">
+
+                    <input
+                        type="checkbox"
+                        data-name="Wireless Keyboard"
+                        data-price="850">
+
+                    <span class="product-name">
+                        Wireless Keyboard
+                    </span>
+
+                </div>
+
+                <span class="product-price">
+                    ₱850
+                </span>
+
+            </label>
+
+
+            <!-- PRODUCT 2 -->
+
+            <label class="product">
+
+                <div class="product-left">
+
+                    <input
+                        type="checkbox"
+                        data-name="Desk Lamp"
+                        data-price="450">
+
+                    <span class="product-name">
+                        Desk Lamp
+                    </span>
+
+                </div>
+
+                <span class="product-price">
+                    ₱450
+                </span>
+
+            </label>
+
+
+            <!-- PRODUCT 3 -->
+
+            <label class="product">
+
+                <div class="product-left">
+
+                    <input
+                        type="checkbox"
+                        data-name="USB Flash Drive"
+                        data-price="350">
+
+                    <span class="product-name">
+                        USB Flash Drive
+                    </span>
+
+                </div>
+
+                <span class="product-price">
+                    ₱350
+                </span>
+
+            </label>
+
+
+            <!-- PRODUCT 4 -->
+
+            <label class="product">
+
+                <div class="product-left">
+
+                    <input
+                        type="checkbox"
+                        data-name="Phone Stand"
+                        data-price="280">
+
+                    <span class="product-name">
+                        Phone Stand
+                    </span>
+
+                </div>
+
+                <span class="product-price">
+                    ₱280
+                </span>
+
+            </label>
+
+
+            <!-- PRODUCT 5 -->
+
+            <label class="product">
+
+                <div class="product-left">
+
+                    <input
+                        type="checkbox"
+                        data-name="Charging Cable"
+                        data-price="220">
+
+                    <span class="product-name">
+                        Charging Cable
+                    </span>
+
+                </div>
+
+                <span class="product-price">
+                    ₱220
+                </span>
+
+            </label>
+
+
+            <button
+                class="generate"
+                onclick="generateReceipt()">
+
+                Generate Receipt
+
+            </button>
+
+
+            <div
+                id="receiptResult"
+                class="receipt">
+
+                Your receipt will appear here.
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+
+            StockMate • Receipt Generator
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =================================
+   SHOW SKU PAGE
+================================= */
+
+function showSKU() {
+
+    document
+        .getElementById("skuPage")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("receiptPage")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("skuNav")
+        .classList
+        .add("active");
+
+
+    document
+        .getElementById("receiptNav")
+        .classList
+        .remove("active");
+
+}
+
+
+
+/* =================================
+   SHOW RECEIPT PAGE
+================================= */
+
+function showReceipt() {
+
+    document
+        .getElementById("skuPage")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("receiptPage")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("skuNav")
+        .classList
+        .remove("active");
+
+
+    document
+        .getElementById("receiptNav")
+        .classList
+        .add("active");
+
+}
+
+
+
+/* =================================
+   GENERATE SKU
+================================= */
+
+function generateSKU() {
+
+
+    const category =
+
+        document
+        .getElementById("category")
+        .value;
+
+
+    const product =
+
+        document
+        .getElementById("product")
+        .value
+        .trim();
+
+
+    const stock =
+
+        document
+        .getElementById("stock")
+        .value;
+
+
+
+    if (
+        product === "" ||
+        stock === ""
+    ) {
+
+        document
+            .getElementById("skuResult")
+            .innerHTML =
+
+            "<b>Please complete all fields.</b>";
+
+        return;
+
+    }
+
+
+
+    /*
+        Take the first four
+        letters/numbers of
+        the product name.
+    */
+
+    const productCode =
+
+        product
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, "")
+        .substring(0, 4);
+
+
+
+    /*
+        Add the stock quantity.
+
+        Example:
+
+        5 = 005
+        25 = 025
+        100 = 100
+    */
+
+    const stockCode =
+
+        String(
+            Math.max(
+                0,
+                Number(stock)
+            )
+        )
+        .padStart(3, "0");
+
+
+
+    /*
+        FINAL SKU
+
+        Category
+        +
+        Product
+        +
+        Stock
+    */
+
+    const sku =
+
+        category +
+        "-" +
+        productCode +
+        "-" +
+        stockCode;
+
+
+
+    document
+        .getElementById("skuResult")
+        .innerHTML = `
+
+            <div class="sku-label">
+                GENERATED SKU
+            </div>
+
+            <div class="sku-code">
+                ${sku}
+            </div>
+
+            <div class="sku-info">
+                ${category} •
+                ${product} •
+                ${stock} units in stock
+            </div>
+
+        `;
+
+}
+
+
+
+/* =================================
+   PESO FORMAT
+================================= */
+
+function peso(amount) {
+
+    return "₱" +
+
+        amount.toLocaleString(
+            "en-PH",
+            {
+                minimumFractionDigits: 2
+            }
+        );
+
+}
+
+
+
+/* =================================
+   GENERATE RECEIPT
+================================= */
+
+function generateReceipt() {
+
+
+    const selected =
+
+        [
+            ...document.querySelectorAll(
+                '#receiptPage input[type="checkbox"]:checked'
+            )
+        ];
+
+
+
+    if (selected.length === 0) {
+
+        document
+            .getElementById("receiptResult")
+            .innerHTML =
+
+            "Please select at least one product.";
+
+        return;
+
+    }
+
+
+
+    let total = 0;
+
+
+    let html =
+
+        "<h2>Receipt</h2>";
+
+
+
+    selected.forEach(item => {
+
+
+        const price =
+
+            Number(
+                item.dataset.price
+            );
+
+
+        total += price;
+
+
+
+        html += `
+
+            <div class="receipt-line">
+
+                <span>
+                    ${item.dataset.name}
+                </span>
+
+                <span>
+                    ${peso(price)}
+                </span>
+
+            </div>
+
+        `;
+
+    });
+
+
+
+    html += `
+
+        <div class="receipt-total">
+
+            <span>
+                Total
+            </span>
+
+            <span>
+                ${peso(total)}
+            </span>
+
+        </div>
+
+    `;
+
+
+
+    document
+        .getElementById("receiptResult")
+        .innerHTML = html;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
